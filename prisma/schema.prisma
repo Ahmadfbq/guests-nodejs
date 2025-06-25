@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Guest {
+  id         Int           @id @default(autoincrement())
+  name       String        @db.VarChar(255)
+  parties    GuestParty[]  
+}
+
+model Party {
+  id              Int           @id @default(autoincrement())
+  name            String        @db.VarChar(255)
+  location        String        @db.VarChar(255)
+  dateTime        DateTime      
+  attendanceCount Int           @default(0)
+  guests          GuestParty[]  
+}
+
+model GuestParty {
+  guestId Int
+  partyId Int
+
+  guest   Guest @relation(fields: [guestId], references: [id])
+  party   Party @relation(fields: [partyId], references: [id])
+
+  @@id([guestId, partyId]) 
+}
+
