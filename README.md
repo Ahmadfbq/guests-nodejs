@@ -20,7 +20,7 @@ A Node.js backend application built with Express.js for managing guests and part
 
 1. **Clone the repository**
    ```bash
-   git clone <https://github.com/Ahmadfbq/guests-nodejs>
+   git clone https://github.com/Ahmadfbq/guests-nodejs
    cd guests-nodejs
    ```
 
